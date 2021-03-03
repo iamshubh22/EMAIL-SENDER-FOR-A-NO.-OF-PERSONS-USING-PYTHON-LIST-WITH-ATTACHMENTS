@@ -1,28 +1,24 @@
 import smtplib   #LIBRARY FOR SENDING THE MAIL OVER THE INTERNET FOR A VALID EMAIL ADDRESS
-from email.mime.multipart import MIMEMultipart #FOR MAKING DIFFERENT PARTS IN THE SCRIPT AND CONNECTING ALL THE PARTS IN THE END
+from email.mime.multipart import MIMEMultipart 
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
-# list of email_id to send the mail
-list = ["dishadwivedi233@gmail.com"]
+list = ["RECIVERS MAIL ID , , , ...."]
 for demon in list:
         shubh = smtplib.SMTP('smtp.gmail.com', 587)
         shubh.starttls()
-        shubh.login("shubhdwivedimi@gmail.com", "shubhdisha22")
+        shubh.login("SENDERS_EMAIL", "SENDER_PASSWORD")
         gmail_gui = MIMEMultipart()
-        # storing the senders email address
-        gmail_gui['From'] = "SHUBHKANT DWIVEDI"
-        # storing the receivers email address
-        gmail_gui['To'] =  demon
-        # storing the subject
-        gmail_gui['Subject'] = "FIFA FOR LIFE"
-        # string to store the body of the mail
-        body = "I WOULD LIKE TO DRAW ALL OF YOUR ATTENTION TO THE FIFA EVENT GOING TO HAPPEN IN AMITY AMICHROMA SO I WOULD LIKE ALL OF YOU TO REGISTER FOR THE EVENT,YOU CAN USE THE ATTACHED POSTER FOR FUTURE DETAILS"
+        gmail_gui['From'] = "NAME OF SENDING PARTY"
+        # storing the receivers email address and will help you to show the receivers mail in TO of the gui part
+        gmail_gui['To'] =  demon   
+        gmail_gui['Subject'] = "MAIL SUBJECT"
+        body = "BODY FOR THE MAIL"
         # attach the body with the msg instance
         gmail_gui.attach(MIMEText(body, 'plain'))
         # open the file to be sent
-        filename = "pp.jpg"
-        attachment = open("E:\AMITIAN\pp.jpg", "rb")
+        filename = "NAME OF ATTCHMENT FILE WITH EXTENSION"
+        attachment = open("PATH FOR THE FILE", "rb")
         #   instance of MIMEBase and named as p
         connect = MIMEBase('application', 'octet-stream')
         # To change the payload into encoded form
@@ -34,6 +30,6 @@ for demon in list:
         gmail_gui.attach(connect)
         # Converts the Multipart msg into a string
         alpha= gmail_gui.as_string()
-        shubh.sendmail("shubhdwivedimigmail.com",demon,alpha)
+        shubh.sendmail("SENDERS MAIL",demon,alpha)
         print("the mail has been sent")
         shubh.quit()
